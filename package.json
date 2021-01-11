@@ -11,7 +11,8 @@
   },
   "author": "Damien Mortini",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "../../@damienmortini/lib/packages/**/*"
   ],
   "devDependencies": {
     "@damienmortini/server": "^1.0.31",
