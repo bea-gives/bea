@@ -1,21 +1,18 @@
 {
-  "name": "@bea-org/library",
+  "name": "@bea-org/bea",
   "version": "0.0.0",
   "private": true,
-  "description": "Web starter",
+  "description": "Common tiny modules for Béa applications",
   "scripts": {
-    "start": "server",
     "test": "eslint packages",
     "update": "yarn",
     "upgrade": "yarn install && yarn upgrade-interactive --latest"
   },
-  "author": "Damien Mortini",
+  "author": "Béa",
   "workspaces": [
-    "packages/*",
-    "../../@damienmortini/lib/packages/**/*"
+    "packages/*"
   ],
   "devDependencies": {
-    "@damienmortini/server": "^1.0.31",
     "eslint": "^7.17.0",
     "eslint-config-google": "^0.14.0",
     "yarn": "^1.22.10"
