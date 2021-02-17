@@ -6,7 +6,8 @@
   "scripts": {
     "test": "eslint packages",
     "update": "yarn",
-    "upgrade": "yarn install && yarn upgrade-interactive --latest"
+    "upgrade": "yarn install && yarn upgrade-interactive --latest",
+    "version": "lerna version"
   },
   "author": "Béa",
   "workspaces": [
