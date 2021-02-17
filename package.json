@@ -4,7 +4,6 @@
   "type": "module",
   "description": "Common tiny modules for Béa applications",
   "scripts": {
-    "patch": "lerna version patch",
     "rewritepackagefiles": "node rewritepackagefiles.js",
     "test": "eslint packages",
     "update": "yarn",
