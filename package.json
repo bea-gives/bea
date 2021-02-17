@@ -15,7 +15,7 @@
     "packages/*"
   ],
   "devDependencies": {
-    "eslint": "^7.17.0",
+    "eslint": "^7.20.0",
     "eslint-config-google": "^0.14.0",
     "lerna": "^3.22.1",
     "yarn": "^1.22.10"
