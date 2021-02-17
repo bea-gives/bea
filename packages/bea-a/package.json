@@ -1,4 +1,13 @@
 {
   "name": "@bea-org/bea-a",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "author": "Béa",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bea-org/bea",
+    "directory": "packages/bea-a"
+  },
+  "bugs": "https://github.com/bea-org/bea/issues",
+  "homepage": "https://github.com/bea-org/bea/tree/master/packages/bea-a"
 }

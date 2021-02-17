@@ -1,8 +1,10 @@
 {
   "name": "@bea-org/bea",
   "private": true,
+  "type": "module",
   "description": "Common tiny modules for Béa applications",
   "scripts": {
+    "rewritepackagefiles": "node rewritepackagefiles.js",
     "test": "eslint packages",
     "update": "yarn",
     "upgrade": "yarn install && yarn upgrade-interactive --latest",
@@ -17,5 +19,8 @@
     "eslint-config-google": "^0.14.0",
     "lerna": "^3.22.1",
     "yarn": "^1.22.10"
+  },
+  "dependencies": {
+    "fast-glob": "^3.2.5"
   }
 }
