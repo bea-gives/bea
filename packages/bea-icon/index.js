@@ -15,20 +15,25 @@ window.customElements.define('bea-icon', class extends HTMLElement {
     this.attachShadow({ mode: 'open' }).innerHTML = `<style>
   :host {
     --stroke-width: 1px;
+    --size: 25px;
+    --icon-size: 100%;
     display: block;
     position: relative;
-    width: 25px;
-    height: 25px;
+    width: var(--size);
+    height: var(--size);
     box-sizing: border-box;
     color: black;
   }
 
   :host([type=fill]), :host([type=stroke]) {
+    --icon-size: 33%;
     border-radius: 50%;
   }
   
   :host([type=fill]) {
-    background-color: var(--color-blue);
+    color: white;
+    background-color: black;
+    filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.1));
   }
 
   :host([type=stroke]) {
@@ -64,8 +69,8 @@ window.customElements.define('bea-icon', class extends HTMLElement {
   }
 
   :host([type=fill]) svg, :host([type=stroke]) svg {
-    width: 60%;
-    height: 60%;
+    width: var(--icon-size);
+    height: var(--icon-size);
   }
 </style>
 <div id="icon-container"></div>`;
