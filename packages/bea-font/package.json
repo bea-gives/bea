@@ -5,9 +5,9 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bea-org/bea",
+    "url": "https://github.com/bea-gives/bea",
     "directory": "packages/bea-font"
   },
-  "bugs": "https://github.com/bea-org/bea/issues",
-  "homepage": "https://github.com/bea-org/bea/tree/master/packages/bea-font"
+  "bugs": "https://github.com/bea-gives/bea/issues",
+  "homepage": "https://github.com/bea-gives/bea/tree/master/packages/bea-font"
 }

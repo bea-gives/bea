@@ -17,11 +17,11 @@ for (const result of fastGlob.sync([
     license: 'ISC',
     repository: {
       type: 'git',
-      url: 'https://github.com/bea-org/bea',
+      url: 'https://github.com/bea-gives/bea',
       directory,
     },
-    bugs: 'https://github.com/bea-org/bea/issues',
-    homepage: `https://github.com/bea-org/bea/tree/master/${directory}`,
+    bugs: 'https://github.com/bea-gives/bea/issues',
+    homepage: `https://github.com/bea-gives/bea/tree/master/${directory}`,
   };
   fs.writeFileSync(filePath, `${JSON.stringify(packageData, null, 2)}\n`);
 }
