@@ -1,5 +1,5 @@
 {
-  "name": "@bea-org/bea",
+  "name": "@bea-gives/bea",
   "private": true,
   "type": "module",
   "description": "Common tiny modules for Béa applications",
