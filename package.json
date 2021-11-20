@@ -15,12 +15,12 @@
     "packages/*"
   ],
   "devDependencies": {
-    "eslint": "^7.25.0",
+    "eslint": "^8.2.0",
     "eslint-config-google": "^0.14.0",
     "lerna": "^4.0.0",
-    "yarn": "^1.22.10"
+    "yarn": "^1.22.17"
   },
   "dependencies": {
-    "fast-glob": "^3.2.5"
+    "fast-glob": "^3.2.7"
   }
 }
