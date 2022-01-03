@@ -57,7 +57,7 @@ window.customElements.define('bea-logo', class extends HTMLElement {
 </style>
 <div id="background"></div>`;
 
-    fetch('node_modules/@bea-gives/bea-logo/logo.svg').then((response) => response.text()).then((data) => {
+    fetch('node_modules/@beagives/bea-logo/logo.svg').then((response) => response.text()).then((data) => {
       const template = document.createElement('template');
       template.innerHTML = data;
       this.shadowRoot.appendChild(template.content.cloneNode(true));

@@ -1,13 +1,13 @@
 {
-  "name": "@bea-gives/bea-icon",
+  "name": "@beagives/bea-icon",
   "version": "0.0.4",
   "author": "Béa",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bea-gives/bea",
+    "url": "https://github.com/beagives/bea",
     "directory": "packages/bea-icon"
   },
-  "bugs": "https://github.com/bea-gives/bea/issues",
-  "homepage": "https://github.com/bea-gives/bea/tree/master/packages/bea-icon"
+  "bugs": "https://github.com/beagives/bea/issues",
+  "homepage": "https://github.com/beagives/bea/tree/master/packages/bea-icon"
 }

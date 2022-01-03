@@ -1,13 +1,13 @@
 {
-  "name": "@bea-gives/bea-font",
+  "name": "@beagives/bea-font",
   "version": "0.0.5",
   "author": "Béa",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bea-gives/bea",
+    "url": "https://github.com/beagives/bea",
     "directory": "packages/bea-font"
   },
-  "bugs": "https://github.com/bea-gives/bea/issues",
-  "homepage": "https://github.com/bea-gives/bea/tree/master/packages/bea-font"
+  "bugs": "https://github.com/beagives/bea/issues",
+  "homepage": "https://github.com/beagives/bea/tree/master/packages/bea-font"
 }

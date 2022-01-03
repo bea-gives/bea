@@ -87,7 +87,7 @@ window.customElements.define('bea-icon', class extends HTMLElement {
   }
 
   async _loadIcon(icon) {
-    const svg = await fetch(`node_modules/@bea-gives/bea-icon/${icon}.svg`).then((response) => response.text());
+    const svg = await fetch(`node_modules/@beagives/bea-icon/${icon}.svg`).then((response) => response.text());
     this._iconContainer.innerHTML = svg;
   }
 
