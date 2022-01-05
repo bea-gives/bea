@@ -5,10 +5,10 @@
   "description": "Common tiny modules for Béa applications",
   "scripts": {
     "start": "server",
+    "publish": "lerna publish from-package --yes",
     "rewritepackagefiles": "node rewritepackagefiles.js",
     "test": "eslint packages",
-    "update": "yarn",
-    "upgrade": "yarn install && yarn upgrade-interactive --latest",
+    "update": "npm i",
     "version": "lerna version"
   },
   "author": "Béa",
@@ -20,8 +20,7 @@
     "@damienmortini/server": "^1.0.52",
     "eslint": "^8.6.0",
     "fast-glob": "^3.2.7",
-    "lerna": "^4.0.0",
-    "yarn": "^1.22.17"
+    "lerna": "^4.0.0"
   },
   "dependencies": {
     "@damienmortini/damdom-gallery": "^0.0.8",
