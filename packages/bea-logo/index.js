@@ -1,5 +1,4 @@
 /**
- * Entry point element
  * @hideconstructor
  * @example
  * <bea-logo></bea-logo>
