@@ -5,7 +5,7 @@
  */
 window.customElements.define('bea-logo', class extends HTMLElement {
   constructor() {
-    super();
+    super()
 
     this.attachShadow({ mode: 'open' }).innerHTML = `<style>
   :host {
@@ -54,12 +54,12 @@ window.customElements.define('bea-logo', class extends HTMLElement {
     background-color: white;
   }
 </style>
-<div id="background"></div>`;
+<div id="background"></div>`
 
     fetch('node_modules/@beagives/bea-logo/logo.svg').then((response) => response.text()).then((data) => {
-      const template = document.createElement('template');
-      template.innerHTML = data;
-      this.shadowRoot.appendChild(template.content.cloneNode(true));
-    });
+      const template = document.createElement('template')
+      template.innerHTML = data
+      this.shadowRoot.appendChild(template.content.cloneNode(true))
+    })
   }
-});
+})
