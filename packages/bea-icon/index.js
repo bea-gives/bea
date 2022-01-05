@@ -5,11 +5,11 @@
  */
 window.customElements.define('bea-icon', class extends HTMLElement {
   static get observedAttributes() {
-    return ['icon'];
+    return ['icon']
   }
 
   constructor() {
-    super();
+    super()
 
     this.attachShadow({ mode: 'open' }).innerHTML = `<style>
   :host {
@@ -72,29 +72,29 @@ window.customElements.define('bea-icon', class extends HTMLElement {
     height: var(--icon-size);
   }
 </style>
-<div id="icon-container"></div>`;
+<div id="icon-container"></div>`
 
-    this._iconContainer = this.shadowRoot.querySelector('#icon-container');
+    this._iconContainer = this.shadowRoot.querySelector('#icon-container')
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
     switch (name) {
       case 'icon':
-        this._loadIcon(newValue);
-        break;
+        this._loadIcon(newValue)
+        break
     }
   }
 
   async _loadIcon(icon) {
-    const svg = await fetch(`node_modules/@beagives/bea-icon/${icon}.svg`).then((response) => response.text());
-    this._iconContainer.innerHTML = svg;
+    const svg = await fetch(`node_modules/@beagives/bea-icon/${icon}.svg`).then((response) => response.text())
+    this._iconContainer.innerHTML = svg
   }
 
   get icon() {
-    return this.getAttribute('icon');
+    return this.getAttribute('icon')
   }
 
   set icon(value) {
-    this.setAttribute('icon', value);
+    this.setAttribute('icon', value)
   }
-});
+})

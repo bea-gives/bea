@@ -5,11 +5,11 @@
  */
 window.customElements.define('bea-a', class extends HTMLElement {
   static get observedAttributes() {
-    return ['href', 'target'];
+    return ['href', 'target']
   }
 
   constructor() {
-    super();
+    super()
 
     this.attachShadow({ mode: 'open' }).innerHTML = `<style>
   :host {
@@ -35,35 +35,35 @@ window.customElements.define('bea-a', class extends HTMLElement {
 </style>
 <a href="">
   <slot></slot>
-</a>`;
+</a>`
 
-    this._a = this.shadowRoot.querySelector('a');
+    this._a = this.shadowRoot.querySelector('a')
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
     switch (name) {
       case 'href':
       case 'target':
-        this._a[name] = newValue;
-        break;
+        this._a[name] = newValue
+        break
       default:
-        break;
+        break
     }
   }
 
   get href() {
-    return this.getAttribute('href');
+    return this.getAttribute('href')
   }
 
   set href(value) {
-    this.setAttribute('href', value);
+    this.setAttribute('href', value)
   }
 
   get target() {
-    return this.getAttribute('target');
+    return this.getAttribute('target')
   }
 
   set target(value) {
-    this.setAttribute('target', value);
+    this.setAttribute('target', value)
   }
-});
+})

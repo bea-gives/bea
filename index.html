@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" href="data:,">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Béá components library</title>
+
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+    }
+
+    damdom-gallery {
+      width: 100%;
+      height: 100%;
+    }
+
+    damdom-gallery::part(grid) {
+      padding: 25px;
+      gap: 25px;
+    }
+
+    damdom-gallery::part(item) {
+      border-radius: 10px;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <script async src="node_modules/es-module-shims/dist/es-module-shims.js"></script>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "@damienmortini/": "./node_modules/@damienmortini/",
+        "@beagives/": "./node_modules/@beagives/",
+        "gl-matrix": "./node_modules/gl-matrix/esm/index.js"
+      }
+    }
+  </script>
+
+  <damdom-gallery>
+    <bea-a>A link</bea-a>
+    <bea-icon icon="asterisk" type="fill"></bea-icon>
+    <bea-logo></bea-logo>
+  </damdom-gallery>
+
+  <script type="module">
+    import "@damienmortini/damdom-gallery/index.js"
+
+    const gallery = document.querySelector('damdom-gallery')
+
+    const hashchange = () => {
+      const hash = location.hash.slice(1)
+      if (hash) gallery.highlighted = gallery.querySelector(hash)
+      else gallery.highlighted = null
+    }
+    hashchange()
+
+    gallery.addEventListener('highlightchange', () => {
+      location.hash = gallery.highlighted?.tagName.toLowerCase() ?? ''
+    })
+
+    const initializedElementSet = new Set()
+    const observer = new IntersectionObserver((entries) => {
+      let isIntersecting = false
+      for (const entry of entries) {
+        const tagName = entry.target.tagName.toLowerCase()
+        if (entry.isIntersecting && !initializedElementSet.has(tagName)) {
+          initializedElementSet.add(tagName)
+          import(`@beagives/${tagName}/index.js`)
+        }
+      }
+    })
+    for (const element of document.querySelectorAll('damdom-gallery > *')) {
+      observer.observe(element)
+    }
+  </script>
+</body>
+
+</html>

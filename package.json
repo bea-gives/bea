@@ -4,6 +4,7 @@
   "type": "module",
   "description": "Common tiny modules for Béa applications",
   "scripts": {
+    "start": "server",
     "rewritepackagefiles": "node rewritepackagefiles.js",
     "test": "eslint packages",
     "update": "yarn",
@@ -16,11 +17,14 @@
   ],
   "devDependencies": {
     "@damienmortini/eslint-config": "^0.0.3",
+    "@damienmortini/server": "^1.0.52",
     "eslint": "^8.6.0",
+    "fast-glob": "^3.2.7",
     "lerna": "^4.0.0",
     "yarn": "^1.22.17"
   },
   "dependencies": {
-    "fast-glob": "^3.2.7"
+    "@damienmortini/damdom-gallery": "^0.0.8",
+    "es-module-shims": "^1.4.1"
   }
 }
