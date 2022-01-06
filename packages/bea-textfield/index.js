@@ -1,10 +1,11 @@
 import ColorCSSStyleSheet from '@beagives/bea-color/index.css' assert { type: 'css' }
+import '@beagives/bea-font/index.js'
 
 export class BeaTextFieldElement extends HTMLElement {
   #input
 
   static get observedAttributes() {
-    return ['placeholder']
+    return ['placeholder', 'value']
   }
 
   constructor() {
@@ -12,11 +13,12 @@ export class BeaTextFieldElement extends HTMLElement {
 
     this.attachShadow({ mode: 'open' }).innerHTML = `<style>
   :host {
-    display: block;
+    display: inline-block;
     position: relative;
     background-color: var(--bea-color-ivory);
     color: var(--bea-color-black);
     border-radius: 100px;
+    font-family: Pangram, sans-serif;
   }
   
   :host(:hover) {
@@ -28,7 +30,10 @@ export class BeaTextFieldElement extends HTMLElement {
   }
   
   input {
+    width: 100%;
+    height: 100%;
     padding: 15px 25px;
+    font: inherit;
     box-sizing: border-box;
     border: none;
     border-radius: inherit;
@@ -56,7 +61,18 @@ export class BeaTextFieldElement extends HTMLElement {
       case 'placeholder':
         this.#input.placeholder = newValue
         break
+      case 'value':
+        this.#input.value = newValue
+        break
     }
+  }
+
+  get value() {
+    return this.#input.value
+  }
+
+  set value(value) {
+    this.#input.value = value
   }
 }
 
