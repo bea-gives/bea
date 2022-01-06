@@ -5,7 +5,7 @@
   "description": "Common tiny modules for Béa applications",
   "scripts": {
     "start": "server",
-    "publish": "npm publish --workspaces",
+    "publish": "lerna publish from-package --registry https://npm.pkg.github.com",
     "rewritepackagefiles": "node rewritepackagefiles.js",
     "test": "eslint packages",
     "update": "npm update",
