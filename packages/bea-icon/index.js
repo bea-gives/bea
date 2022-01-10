@@ -16,7 +16,7 @@ window.customElements.define('bea-icon', class extends HTMLElement {
     --stroke-width: 1px;
     --size: 25px;
     --icon-size: 100%;
-    display: block;
+    display: inline-block;
     position: relative;
     width: var(--size);
     height: var(--size);
@@ -64,7 +64,6 @@ window.customElements.define('bea-icon', class extends HTMLElement {
   svg * {
     stroke-width: var(--stroke-width);
     vector-effect: non-scaling-stroke;
-    fill: currentColor;
   }
 
   :host([type=fill]) svg, :host([type=stroke]) svg {

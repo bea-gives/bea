@@ -1,0 +1,20 @@
+import { css } from 'lit'
+
+export const cssColors = css`:root, :host {
+  --bea-color-blue: #6091ff;
+  --bea-color-green: #8ee2c6;
+  --bea-color-coral: #f1a090;
+  --bea-color-yellow: #fbd874;
+  --bea-color-black: #1b2646;
+  --bea-color-grey: #bebebe;
+  --bea-color-ivory: #f0f3f9;
+  --bea-color-white: #ffffff;
+  --bea-color-darkblue: #3e66bf;
+  --bea-color-darkgreen: #23907d;
+  --bea-color-darkcoral: #cb5d4e;
+  --bea-color-brown: #9d785e;
+  --bea-color-lightblue: #c9daff;
+  --bea-color-lightgreen: #cff6e9;
+  --bea-color-lightcoral: #fcdec5;
+  --bea-color-lightyellow: #fcf4ae;
+}`
