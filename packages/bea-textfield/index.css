@@ -1,0 +1,36 @@
+:host {
+  display: inline-block;
+  position: relative;
+  background-color: var(--bea-color-ivory);
+  color: var(--bea-color-black);
+  border-radius: 100px;
+  font-family: Pangram, sans-serif;
+}
+
+:host(:hover) {
+  outline: 1px solid var(--bea-color-lightblue);
+}
+
+:host(:focus-within) {
+  outline: 2px solid var(--bea-color-lightblue);
+}
+
+input {
+  width: 100%;
+  height: 100%;
+  padding: 15px 25px;
+  font: inherit;
+  box-sizing: border-box;
+  border: none;
+  border-radius: inherit;
+  background-color: inherit;
+}
+
+input::placeholder {
+  color: var(--bea-color-black);
+  opacity: .3;
+}
+
+input:focus {
+  outline: none;
+}

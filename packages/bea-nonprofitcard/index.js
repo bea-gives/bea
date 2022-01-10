@@ -1,108 +1,77 @@
-import { html, css, LitElement } from 'lit'
-import { cssColors } from '@beagives/bea-color/index.js'
+import cssColors from '@beagives/bea-color/index.css' assert { type: 'css' }
+import css from './index.css' assert { type: 'css' }
 import '@beagives/bea-icon/index.js'
 import '@beagives/bea-font/index.js'
 
-export class BeaNonprofitCardElement extends LitElement {
-  static styles = [
-    cssColors,
-    css`:host {
-  display: block;
-  position: relative;
-  width: 380px;
-  background-color: var(--bea-color-white);
-  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.15);
-  padding: 20px;
-  border-radius: 15px;
-  overflow: hidden;
-  font-family: Pangram, sans-serif;
-  font-size: 16px;
-  box-sizing: border-box;
-}
+export class BeaNonprofitCardElement extends HTMLElement {
+  #labelsContainer
+  #labels
 
-:host::before {
-  content: '';
-  z-index: 0;
-  background-color: var(--bea-color-ivory);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
-}
-
-#content {
-  display: grid;
-  gap: 20px;
-}
-
-#logo {
-  width: 80px;
-  height: 80px;
-  border-radius: 40px;
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
-  background: white;
-  z-index: 1;
-}
-
-#name {
-  font-weight: 700;
-  font-size: 1.625em;
-  color: var(--bea-color-black);
-}
-
-#fullname {
-  color: var(--bea-color-grey);
-}
-
-#addresses {
-  display: grid;
-  gap: 5px;
-  grid-template-columns: auto 1fr;
-  align-items: center;
-  font-family: Mulish, sans-serif;
-  color: var(--bea-color-grey);
-  font-weight: 800;
-  font-size: 12px;
-  text-transform: uppercase;
-}
-
-#addresses bea-icon {
-  --size: 1.4em;
-  --stroke-width: 2px;
-  color: inherit;
-}
-
-#organizationnumbercontainer {
-  color: var(--bea-color-grey);
-}`,
-  ]
-
-  static properties = {
-    name: { type: String },
-    fullName: { type: String },
-    address: { type: String },
-    organizationNumber: { type: String },
-    labels: { type: Array },
+  static get observedAttributes() {
+    return ['name', 'fullname', 'organizationnumber', 'address', 'labels']
   }
 
-  render() {
-    return html`<div id="content">
-  <div id="logo"></div>
-  <div>
-    <div id="name">${this.name}</div>
-    <div id="fullname">${this.fullName}</div>
-    <div id="organizationnumbercontainer">
-      Siret: <span id="organizationnumber">${this.organizationNumber}</span>
+  constructor() {
+    super()
+
+    this.attachShadow({ mode: 'open' }).innerHTML = `<div id="content">
+    <div id="logo"></div>
+    <div>
+      <div id="name"></div>
+      <div id="fullname"></div>
+      <div id="organizationnumbercontainer">
+        Siret: <span id="organizationnumber"></span>
+      </div>
     </div>
-  </div>
-  <div id="addresses">
-    <bea-icon icon="pin"></bea-icon>
-    <span id="address">${this.address}</span>
-  </div>
-  <div id="labels">${this.labels}</div>
-</div>`
+    <div id="addresses">
+      <bea-icon icon="pin"></bea-icon>
+      <span id="address"></span>
+    </div>
+    <div id="labels"></div>
+  </div>`
+
+    this.shadowRoot.adoptedStyleSheets = [cssColors, css]
+
+    this.#labelsContainer = this.shadowRoot.querySelector('#labels')
   }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (oldValue === newValue) return
+    switch (name) {
+      case 'labels':
+        this.labels = newValue?.split(' ')
+        break
+      default:
+        this.shadowRoot.querySelector(`#${name}`).textContent = newValue
+        break
+    }
+  }
+
+  get labels() {
+    return this.getAttribute('labels')
+  }
+  set labels(value) {
+    this.#labelsContainer.innerHTML = ''
+    this.#labels = value
+    if (!this.#labels) return
+    for (const label of this.#labels) {
+      const labelElement = document.createElement('bea-label')
+      labelElement.name = label
+      this.#labelsContainer.appendChild(labelElement)
+    }
+  }
+
+  get name() { return this.getAttribute('name') }
+  set name(value) { this.setAttribute('name', value) }
+
+  get fullName() { return this.getAttribute('fullname') }
+  set fullName(value) { this.setAttribute('fullname', value) }
+
+  get organizationNumber() { return this.getAttribute('organizationnumber') }
+  set organizationNumber(value) { this.setAttribute('organizationnumber', value) }
+
+  get address() { return this.getAttribute('address') }
+  set address(value) { this.setAttribute('address', value) }
 }
 
 window.customElements.define('bea-nonprofitcard', BeaNonprofitCardElement)

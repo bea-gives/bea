@@ -5,7 +5,6 @@
   "dependencies": {
     "@beagives/bea-color": "^0.0.5",
     "@beagives/bea-font": "^0.0.6",
-    "@beagives/bea-icon": "^0.0.5",
-    "lit": "^2.1.1"
+    "@beagives/bea-icon": "^0.0.5"
   }
 }
