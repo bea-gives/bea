@@ -4,35 +4,46 @@ import '@beagives/bea-icon/index.js'
 import '@beagives/bea-font/index.js'
 
 export class BeaNonprofitCardElement extends HTMLElement {
-  #labelsContainer
   #labels
+  #address
+  #organizationNumber
+  #additionalNumbers
+  #logoElement
+  #labelsElement
+  #descriptionElement
+  #fullNameElement
+  #organizationNumberElement
+  #addressElement
+  #additionalNumbersElement
 
   static get observedAttributes() {
-    return ['name', 'fullname', 'organizationnumber', 'address', 'labels']
+    return ['logo', 'name', 'fullname', 'organizationnumber', 'address', 'labels']
   }
 
   constructor() {
     super()
 
-    this.attachShadow({ mode: 'open' }).innerHTML = `<div id="content">
-    <div id="logo"></div>
-    <div>
-      <div id="name"></div>
-      <div id="fullname"></div>
-      <div id="organizationnumbercontainer">
-        Siret: <span id="organizationnumber"></span>
-      </div>
-    </div>
-    <div id="addresses">
-      <bea-icon icon="pin"></bea-icon>
-      <span id="address"></span>
-    </div>
-    <div id="labels"></div>
-  </div>`
+    this.attachShadow({ mode: 'open' }).innerHTML = `<div id="logocontainer"><div id="logo"></div></div>
+<div>
+  <div id="name"></div>
+  <div id="fullname"></div>
+  <a id="organizationnumber" target="_blank"></a>
+  <div id="additionalnumbers"></div>
+</div>
+<a id="address" target="_blank"></a>
+<div id="labels"></div>
+<div id="description"></div>`
 
     this.shadowRoot.adoptedStyleSheets = [cssColors, css]
 
-    this.#labelsContainer = this.shadowRoot.querySelector('#labels')
+    this.#logoElement = this.shadowRoot.querySelector('#logo')
+    this.#labelsElement = this.shadowRoot.querySelector('#labels')
+    this.#addressElement = this.shadowRoot.querySelector('#address')
+    this.#descriptionElement = this.shadowRoot.querySelector('#description')
+    this.#fullNameElement = this.shadowRoot.querySelector('#fullname')
+    this.#organizationNumberElement = this.shadowRoot.querySelector('#organizationnumber')
+    this.#address = this.shadowRoot.querySelector('#address')
+    this.#additionalNumbersElement = this.shadowRoot.querySelector('#additionalnumbers')
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
@@ -41,37 +52,81 @@ export class BeaNonprofitCardElement extends HTMLElement {
       case 'labels':
         this.labels = newValue?.split(' ')
         break
+      case 'logo':
+        this.#logoElement.style.backgroundImage = newValue ? `url(${newValue})` : ''
+        break
       default:
         this.shadowRoot.querySelector(`#${name}`).textContent = newValue
         break
     }
   }
 
+  get name() { return this.getAttribute('name') }
+  set name(value) { this.setAttribute('name', value) }
+
+  get description() { return this.#descriptionElement.textContent }
+  set description(value) { this.#descriptionElement.textContent = value }
+
+  get fullName() { return this.#fullNameElement.textContent }
+  set fullName(value) { this.#fullNameElement.textContent = value }
+
+  get organizationNumber() {
+    return this.#organizationNumber
+  }
+  set organizationNumber(value) {
+    this.#organizationNumber = value
+    this.#organizationNumberElement.innerHTML = this.#organizationNumber ? `Siret: ${this.#organizationNumber}` : ''
+  }
+
+  get address() {
+    return this.#address
+  }
+  set address(value) {
+    this.#address = value
+    this.#addressElement.href = `http://maps.google.com/?q=${this.#address}`
+    this.#addressElement.innerHTML = this.#address ? `<bea-icon icon="pin"></bea-icon>${this.#address}` : ''
+  }
+
+  get logo() {
+    return this.getAttribute('logo')
+  }
+
+  set logo(value) {
+    this.setAttribute('logo', value)
+  }
+
+  get organizationNumberLink() {
+    return this.#organizationNumberElement.href
+  }
+  set organizationNumberLink(value) {
+    this.#organizationNumberElement.href = value
+  }
+
   get labels() {
-    return this.getAttribute('labels')
+    return this.#labels
   }
   set labels(value) {
-    this.#labelsContainer.innerHTML = ''
+    this.#labelsElement.innerHTML = ''
     this.#labels = value
     if (!this.#labels) return
     for (const label of this.#labels) {
       const labelElement = document.createElement('bea-label')
       labelElement.name = label
-      this.#labelsContainer.appendChild(labelElement)
+      this.#labelsElement.appendChild(labelElement)
     }
   }
 
-  get name() { return this.getAttribute('name') }
-  set name(value) { this.setAttribute('name', value) }
-
-  get fullName() { return this.getAttribute('fullname') }
-  set fullName(value) { this.setAttribute('fullname', value) }
-
-  get organizationNumber() { return this.getAttribute('organizationnumber') }
-  set organizationNumber(value) { this.setAttribute('organizationnumber', value) }
-
-  get address() { return this.getAttribute('address') }
-  set address(value) { this.setAttribute('address', value) }
+  get additionalNumbers() {
+    return this.#additionalNumbers
+  }
+  set additionalNumbers(value) {
+    this.#additionalNumbers = value
+    this.#additionalNumbersElement.innerHTML = ''
+    if (!this.#additionalNumbers) return
+    for (const [key, value] of Object.entries(this.#additionalNumbers)) {
+      this.#additionalNumbersElement.insertAdjacentHTML('beforeend', `${key.toUpperCase()}: ${value}`)
+    }
+  }
 }
 
 window.customElements.define('bea-nonprofitcard', BeaNonprofitCardElement)
