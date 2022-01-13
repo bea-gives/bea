@@ -5,9 +5,10 @@ import '@beagives/bea-font/index.js'
 
 export class BeaNonprofitCardElement extends HTMLElement {
   #labels
-  #address
   #organizationNumber
   #additionalNumbers
+  #locations
+
   #logoElement
   #labelsElement
   #descriptionElement
@@ -23,7 +24,9 @@ export class BeaNonprofitCardElement extends HTMLElement {
   constructor() {
     super()
 
-    this.attachShadow({ mode: 'open' }).innerHTML = `<div id="logocontainer"><div id="logo"></div></div>
+    this.attachShadow({ mode: 'open' })
+    this.shadowRoot.adoptedStyleSheets = [cssColors, css]
+    this.shadowRoot.innerHTML = `<div id="logocontainer"><div id="logo"></div></div>
 <div>
   <div id="name"></div>
   <div id="fullname"></div>
@@ -34,15 +37,12 @@ export class BeaNonprofitCardElement extends HTMLElement {
 <div id="labels"></div>
 <div id="description"></div>`
 
-    this.shadowRoot.adoptedStyleSheets = [cssColors, css]
-
     this.#logoElement = this.shadowRoot.querySelector('#logo')
     this.#labelsElement = this.shadowRoot.querySelector('#labels')
     this.#addressElement = this.shadowRoot.querySelector('#address')
     this.#descriptionElement = this.shadowRoot.querySelector('#description')
     this.#fullNameElement = this.shadowRoot.querySelector('#fullname')
     this.#organizationNumberElement = this.shadowRoot.querySelector('#organizationnumber')
-    this.#address = this.shadowRoot.querySelector('#address')
     this.#additionalNumbersElement = this.shadowRoot.querySelector('#additionalnumbers')
   }
 
@@ -61,30 +61,47 @@ export class BeaNonprofitCardElement extends HTMLElement {
     }
   }
 
-  get name() { return this.getAttribute('name') }
-  set name(value) { this.setAttribute('name', value) }
+  get name() {
+    return this.getAttribute('name')
+  }
 
-  get description() { return this.#descriptionElement.textContent }
-  set description(value) { this.#descriptionElement.textContent = value }
+  set name(value) {
+    this.setAttribute('name', value)
+  }
 
-  get fullName() { return this.#fullNameElement.textContent }
-  set fullName(value) { this.#fullNameElement.textContent = value }
+  get description() {
+    return this.#descriptionElement.textContent
+  }
+
+  set description(value) {
+    this.#descriptionElement.textContent = value
+  }
+
+  get fullName() {
+    return this.#fullNameElement.textContent
+  }
+
+  set fullName(value) {
+    this.#fullNameElement.textContent = value
+  }
 
   get organizationNumber() {
     return this.#organizationNumber
   }
+
   set organizationNumber(value) {
     this.#organizationNumber = value
     this.#organizationNumberElement.innerHTML = this.#organizationNumber ? `Siret: ${this.#organizationNumber}` : ''
   }
 
-  get address() {
-    return this.#address
+  get locations() {
+    return this.#locations
   }
-  set address(value) {
-    this.#address = value
-    this.#addressElement.href = `http://maps.google.com/?q=${this.#address}`
-    this.#addressElement.innerHTML = this.#address ? `<bea-icon icon="pin"></bea-icon>${this.#address}` : ''
+
+  set locations(value) {
+    this.#locations = value
+    this.#addressElement.href = `http://maps.google.com/?q=${this.#locations[0].address}`
+    this.#addressElement.innerHTML = this.#locations.length ? `<bea-icon icon="pin"></bea-icon>${this.#locations[0].address}<br>(${this.#locations.length} locations)` : ''
   }
 
   get logo() {
@@ -98,6 +115,7 @@ export class BeaNonprofitCardElement extends HTMLElement {
   get organizationNumberLink() {
     return this.#organizationNumberElement.href
   }
+
   set organizationNumberLink(value) {
     this.#organizationNumberElement.href = value
   }
@@ -105,6 +123,7 @@ export class BeaNonprofitCardElement extends HTMLElement {
   get labels() {
     return this.#labels
   }
+
   set labels(value) {
     this.#labelsElement.innerHTML = ''
     this.#labels = value
@@ -119,6 +138,7 @@ export class BeaNonprofitCardElement extends HTMLElement {
   get additionalNumbers() {
     return this.#additionalNumbers
   }
+
   set additionalNumbers(value) {
     this.#additionalNumbers = value
     this.#additionalNumbersElement.innerHTML = ''
@@ -129,4 +149,4 @@ export class BeaNonprofitCardElement extends HTMLElement {
   }
 }
 
-window.customElements.define('bea-nonprofitcard', BeaNonprofitCardElement)
+customElements.define('bea-nonprofitcard', BeaNonprofitCardElement)
