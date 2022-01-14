@@ -4,7 +4,8 @@
   "dependencies": {
     "@beagives/bea-color": "^0.0.5",
     "@beagives/bea-font": "^0.0.7",
-    "@beagives/bea-icon": "^0.0.6"
+    "@beagives/bea-icon": "^0.0.6",
+    "@beagives/bea-nonprofitlabel": "^0.0.1"
   },
   "author": "Béa",
   "license": "ISC",

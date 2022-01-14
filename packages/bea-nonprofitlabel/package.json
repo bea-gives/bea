@@ -9,5 +9,8 @@
     "directory": "packages/bea-nonprofitlabel"
   },
   "bugs": "https://github.com/beagives/bea/issues",
-  "homepage": "https://github.com/beagives/bea/tree/master/packages/bea-nonprofitlabel"
+  "homepage": "https://github.com/beagives/bea/tree/master/packages/bea-nonprofitlabel",
+  "dependencies": {
+    "@beagives/bea-api": "^0.0.1"
+  }
 }
