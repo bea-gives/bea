@@ -1,10 +1,10 @@
 {
   "name": "@beagives/bea-nonprofitcard",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "dependencies": {
     "@beagives/bea-color": "^0.0.5",
-    "@beagives/bea-font": "^0.0.6",
-    "@beagives/bea-icon": "^0.0.5"
+    "@beagives/bea-font": "^0.0.7",
+    "@beagives/bea-icon": "^0.0.6"
   },
   "author": "Béa",
   "license": "ISC",
