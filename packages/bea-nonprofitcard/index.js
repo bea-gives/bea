@@ -1,5 +1,6 @@
 import cssColors from '@beagives/bea-color/index.css' assert { type: 'css' }
 import css from './index.css' assert { type: 'css' }
+import '@beagives/bea-nonprofitlabel/index.js'
 import '@beagives/bea-icon/index.js'
 import '@beagives/bea-font/index.js'
 
@@ -129,7 +130,7 @@ export class BeaNonprofitCardElement extends HTMLElement {
     this.#labels = value
     if (!this.#labels) return
     for (const label of this.#labels) {
-      const labelElement = document.createElement('bea-label')
+      const labelElement = document.createElement('bea-nonprofitlabel')
       labelElement.name = label
       this.#labelsElement.appendChild(labelElement)
     }
