@@ -81,3 +81,16 @@
 #organizationnumber, #additionalnumbers {
   color: var(--bea-color-grey);
 }
+
+#labels {
+  --size: 50px;
+  display: grid;
+  height: var(--size);
+  gap: 5px;
+  grid-template-columns: repeat(auto-fill, var(--size));
+}
+
+#labels > * {
+  width: 100%;
+  height: 100%;
+}

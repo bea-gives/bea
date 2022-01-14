@@ -1,6 +1,10 @@
+import { getLabelData } from '@beagives/bea-api/index.js';
+
 import css from './index.css' assert { type: 'css' }
 
 export class BeaNonprofitLabelElement extends HTMLElement {
+  #logoElement
+
   static get observedAttributes() {
     return ['name']
   }
@@ -11,16 +15,25 @@ export class BeaNonprofitLabelElement extends HTMLElement {
     this.attachShadow({ mode: 'open' })
     this.shadowRoot.adoptedStyleSheets = [css]
     this.shadowRoot.innerHTML = `
-      <div id="name"></div>
+      <a id="logo" target="_blank"></a>
     `
+
+    this.#logoElement = this.shadowRoot.querySelector('#logo')
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
     switch (name) {
       case 'name':
-        this.shadowRoot.querySelector('#name').textContent = newValue
+        this.#loadLabel()
         break
     }
+  }
+
+  async #loadLabel() {
+    const labelData = await getLabelData(this.name)
+    this.#logoElement.style.backgroundImage = labelData.logoURL ? `url(${labelData.logoURL})` : ''
+    this.#logoElement.href = labelData.websiteURL ?? ''
+    this.#logoElement.title = labelData.name
   }
 
   get name() {

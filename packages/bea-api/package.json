@@ -1,0 +1,16 @@
+{
+  "name": "@beagives/bea-api",
+  "version": "0.0.0",
+  "dependencies": {
+    "@supabase/supabase-js": "^1.29.1"
+  },
+  "author": "Béa",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/beagives/bea",
+    "directory": "packages/bea-api"
+  },
+  "bugs": "https://github.com/beagives/bea/issues",
+  "homepage": "https://github.com/beagives/bea/tree/master/packages/bea-api"
+}

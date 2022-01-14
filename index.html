@@ -44,6 +44,7 @@
       "imports": {
         "@damienmortini/": "./node_modules/@damienmortini/",
         "@beagives/": "./node_modules/@beagives/",
+        "@supabase/": "./node_modules/@supabase/",
         "gl-matrix": "./node_modules/gl-matrix/esm/index.js"
       }
     }
@@ -55,7 +56,7 @@
     <bea-logo></bea-logo>
     <bea-textfield placeholder="Placeholder text"></bea-textfield>
     <bea-nonprofitcard name="Les Restos du Coeur" fullname="Les Restaurants Du Coeur"
-      address="42 Rue de Clichy 75009 Paris" labels="fr_rup fr_donenconfiance fr_ideas"
+      address="42 Rue de Clichy 75009 Paris" labels="fr_rup fr_dc fr_ideas"
       organizationnumber="33986341700418"></bea-nonprofitcard>
   </damdom-gallery>
 
@@ -70,6 +71,7 @@
       else gallery.highlighted = null
     }
     hashchange()
+    window.addEventListener('hashchange', hashchange)
 
     gallery.addEventListener('highlightchange', () => {
       location.hash = gallery.highlighted?.tagName.toLowerCase() ?? ''
