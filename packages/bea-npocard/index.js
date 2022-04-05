@@ -1,10 +1,10 @@
 import cssColors from '@beagives/bea-color/index.css' assert { type: 'css' }
 import css from './index.css' assert { type: 'css' }
-import '@beagives/bea-nonprofitlabel/index.js'
+import '@beagives/bea-npolabel/index.js'
 import '@beagives/bea-icon/index.js'
 import '@beagives/bea-font/index.js'
 
-export class BeaNonprofitCardElement extends HTMLElement {
+export class BeaNPOCardElement extends HTMLElement {
   #labels
   #organizationNumber
   #additionalNumbers
@@ -130,7 +130,7 @@ export class BeaNonprofitCardElement extends HTMLElement {
     this.#labels = value
     if (!this.#labels) return
     for (const label of this.#labels) {
-      const labelElement = document.createElement('bea-nonprofitlabel')
+      const labelElement = document.createElement('bea-npolabel')
       labelElement.name = label
       this.#labelsElement.appendChild(labelElement)
     }
@@ -150,4 +150,4 @@ export class BeaNonprofitCardElement extends HTMLElement {
   }
 }
 
-customElements.define('bea-nonprofitcard', BeaNonprofitCardElement)
+customElements.define('bea-npocard', BeaNPOCardElement)

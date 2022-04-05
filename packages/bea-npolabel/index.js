@@ -2,7 +2,7 @@ import { getLabelData } from '@beagives/bea-api/index.js';
 
 import css from './index.css' assert { type: 'css' }
 
-export class BeaNonprofitLabelElement extends HTMLElement {
+export class BeaNPOLabelElement extends HTMLElement {
   #logoElement
 
   static get observedAttributes() {
@@ -45,4 +45,4 @@ export class BeaNonprofitLabelElement extends HTMLElement {
   }
 }
 
-customElements.define('bea-nonprofitlabel', BeaNonprofitLabelElement)
+customElements.define('bea-npolabel', BeaNPOLabelElement)
