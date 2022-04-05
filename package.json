@@ -8,7 +8,7 @@
     "publish": "lerna publish from-package --registry https://npm.pkg.github.com",
     "rewritepackagefiles": "node rewritepackagefiles.js",
     "test": "eslint packages",
-    "update": "npm update",
+    "update": "npm i",
     "upgrade": "ncu --deep -u",
     "version": "lerna version"
   },
@@ -17,15 +17,15 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@damienmortini/eslint-config": "^0.0.3",
-    "@damienmortini/server": "^1.0.52",
-    "eslint": "^8.6.0",
-    "fast-glob": "^3.2.7",
+    "@damienmortini/eslint-config": "^0.0.4",
+    "@damienmortini/server": "^1.0.55",
+    "eslint": "^8.12.0",
+    "fast-glob": "^3.2.11",
     "lerna": "^4.0.0",
-    "npm-check-updates": "^12.1.0"
+    "npm-check-updates": "^12.5.7"
   },
   "dependencies": {
-    "@damienmortini/damdom-gallery": "^0.0.8",
-    "es-module-shims": "^1.4.1"
+    "@damienmortini/damdom-gallery": "^0.0.9",
+    "es-module-shims": "^1.5.4"
   }
 }
