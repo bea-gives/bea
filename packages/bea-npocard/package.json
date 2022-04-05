@@ -1,6 +1,6 @@
 {
   "name": "@beagives/bea-npocard",
-  "version": "0.0.2",
+  "version": "0.0.0",
   "dependencies": {
     "@beagives/bea-color": "^0.0.5",
     "@beagives/bea-font": "^0.0.7",
