@@ -1,6 +1,6 @@
 {
   "name": "@beagives/bea-npolabel",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "Béa",
   "license": "ISC",
   "repository": {
@@ -11,6 +11,6 @@
   "bugs": "https://github.com/beagives/bea/issues",
   "homepage": "https://github.com/beagives/bea/tree/master/packages/bea-npolabel",
   "dependencies": {
-    "@beagives/bea-api": "^0.0.1"
+    "@beagives/bea-api": "^0.0.2"
   }
 }
