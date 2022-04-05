@@ -2,7 +2,7 @@
   "name": "@beagives/bea",
   "private": true,
   "type": "module",
-  "description": "Common tiny modules for Béa applications",
+  "description": "Common modules for Béa applications",
   "scripts": {
     "start": "server",
     "publish": "lerna publish from-package --registry https://npm.pkg.github.com",
