@@ -17,9 +17,10 @@ export class BeaNPOCardElement extends HTMLElement {
   #organizationNumberElement
   #addressElement
   #additionalNumbersElement
+  #headerElement
 
   static get observedAttributes() {
-    return ['logo', 'name', 'fullname', 'organizationnumber', 'address', 'labels']
+    return ['logo', 'name', 'fullname', 'organizationnumber', 'locations', 'labels']
   }
 
   constructor() {
@@ -27,17 +28,18 @@ export class BeaNPOCardElement extends HTMLElement {
 
     this.attachShadow({ mode: 'open' })
     this.shadowRoot.adoptedStyleSheets = [cssColors, css]
-    this.shadowRoot.innerHTML = `<div id="logocontainer"><div id="logo"></div></div>
-<div>
-  <div id="name"></div>
-  <div id="fullname"></div>
-  <a id="organizationnumber" target="_blank"></a>
-  <div id="additionalnumbers"></div>
-</div>
+    this.shadowRoot.innerHTML = `<header hidden>
+  <div id="logo"></div>
+</header>
+<div id="name"></div>
+<div id="fullname"></div>
+<a id="organizationnumber" target="_blank"></a>
+<div id="additionalnumbers"></div>
 <a id="address" target="_blank"></a>
 <div id="labels"></div>
 <div id="description"></div>`
 
+    this.#headerElement = this.shadowRoot.querySelector('header')
     this.#logoElement = this.shadowRoot.querySelector('#logo')
     this.#labelsElement = this.shadowRoot.querySelector('#labels')
     this.#addressElement = this.shadowRoot.querySelector('#address')
@@ -55,8 +57,16 @@ export class BeaNPOCardElement extends HTMLElement {
         break
       case 'logo':
         this.#logoElement.style.backgroundImage = newValue ? `url(${newValue})` : ''
+        this.#headerElement.hidden = newValue === null
         break
-      default:
+      case 'locations':
+        this.locations = JSON.parse(newValue)
+        break
+      case 'name':
+      case 'fullname':
+      case 'organizationnumber':
+      case 'additionalnumbers':
+      case 'description':
         this.shadowRoot.querySelector(`#${name}`).textContent = newValue
         break
     }

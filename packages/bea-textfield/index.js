@@ -27,8 +27,12 @@ export class BeaTextFieldElement extends HTMLElement {
     }
   }
 
-  get value() { return this.#input.value }
-  set value(value) { this.#input.value = value }
+  get value() {
+    return this.#input.value
+  }
+  set value(value) {
+    this.#input.value = value
+  }
 }
 
 window.customElements.define('bea-textfield', BeaTextFieldElement)

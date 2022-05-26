@@ -1,4 +1,4 @@
-import { getLabelData } from '@beagives/bea-api/index.js';
+import { getLabelData } from '@beagives/bea-api/index.js'
 
 import css from './index.css' assert { type: 'css' }
 

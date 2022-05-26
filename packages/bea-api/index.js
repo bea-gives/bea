@@ -6,7 +6,7 @@ export const getLabelData = async (id) => {
   if (!labelDataPromises.has(id)) {
     labelDataPromises.set(id, (async () => {
       const { data, error } = await supabase
-        .from('nonprofit_labels')
+        .from('npo_labels')
         .select('name,logo_url,website_url')
         .eq('id', id)
 
