@@ -3,9 +3,9 @@ import css from './index.css' assert { type: 'css' }
 import '@beagives/bea-font/index.js'
 
 export class BeaTextFieldElement extends HTMLElement {
-  #input
+  #inputElement
   #options
-  #dataList
+  #optionsElement
 
   static get observedAttributes() {
     return ['placeholder', 'value', 'autocomplete', 'options']
@@ -14,12 +14,12 @@ export class BeaTextFieldElement extends HTMLElement {
   constructor() {
     super()
 
-    this.attachShadow({ mode: 'open' }).innerHTML = `<input list="datalist">
-<datalist id="datalist"></datalist>`
+    this.attachShadow({ mode: 'open' }).innerHTML = `<input>
+<div id="options"></div>`
     this.shadowRoot.adoptedStyleSheets = [cssColors, css]
 
-    this.#input = this.shadowRoot.querySelector('input')
-    this.#dataList = this.shadowRoot.querySelector('datalist')
+    this.#inputElement = this.shadowRoot.querySelector('input')
+    this.#optionsElement = this.shadowRoot.querySelector('#options')
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
@@ -27,7 +27,7 @@ export class BeaTextFieldElement extends HTMLElement {
       case 'placeholder':
       case 'autocomplete':
       case 'value':
-        this.#input[name] = newValue
+        this.#inputElement[name] = newValue
         break
       case 'options':
         this.options = JSON.parse(newValue)
@@ -65,9 +65,13 @@ export class BeaTextFieldElement extends HTMLElement {
 
   set options(value) {
     this.#options = value
-    this.#dataList.innerHTML = ''
+    this.#optionsElement.innerHTML = ''
     for (const option of this.#options) {
-      this.#dataList.insertAdjacentHTML('beforeend', `<option value="${option.value}">${option.content}</option>`)
+      this.#optionsElement.insertAdjacentHTML('beforeend', `<div class="option">
+  <div class="optionthumbnail" style="background-image:url(${option.thumbnail})"${option.thumbnail ? '' : 'hidden'}></div>
+  <div class="optionvalue">${option.value}</div>
+  <div class="optioncontent">${option.content}</div>
+</div>`)
     }
   }
 }

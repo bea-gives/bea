@@ -3,7 +3,7 @@
   position: relative;
   background-color: var(--bea-color-ivory);
   color: var(--bea-color-black);
-  border-radius: 100px;
+  border-radius: 25px;
   font-family: Pangram, sans-serif;
 }
 
@@ -33,4 +33,58 @@ input::placeholder {
 
 input:focus {
   outline: none;
+}
+
+#options {
+  display: grid;
+  position: absolute;
+  top: 100%;
+  width: calc(100% - 75px);
+  margin-left: 25px;
+  border-radius: 0% 0% 10px 10px;
+  border: 1px solid var(--bea-color-lightblue);
+  border-top: none;
+  padding: 10px;
+}
+
+:host(:not(:focus-within)) #options {
+  display: none;
+}
+
+.option {
+  padding: 5px;
+  display: grid;
+  cursor: pointer;
+  align-items: center;
+  grid-template-columns: auto 1fr;
+  column-gap: 10px;
+  border-radius: 5px;
+}
+
+.option:hover {
+  background-color: var(--bea-color-ivory);
+}
+
+.optionthumbnail {
+  grid-row: 1 / span 2;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.optionthumbnail[hidden] {
+  display: none;
+}
+
+.optionvalue {
+  grid-row: 1;
+}
+
+.optioncontent {
+  grid-row: 2;
+  font-size: .8em;
+  color: var(--bea-color-grey);
 }

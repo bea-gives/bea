@@ -1,6 +1,7 @@
 :host {
   display: grid;
   position: relative;
+  contain: content;
   justify-items: start;
   background-color: var(--bea-color-white);
   padding: 20px;
