@@ -120,7 +120,8 @@ export class BeaNPOCardElement extends HTMLElement {
   }
 
   set logo(value) {
-    this.setAttribute('logo', value)
+    if (!value) this.toggleAttribute('logo', false)
+    else this.setAttribute('logo', value)
   }
 
   get organizationNumberLink() {

@@ -85,6 +85,11 @@ export class BeaTextFieldElement extends HTMLElement {
     this.#optionsElement.hidden = true
     this.value = event.currentTarget.dataset.value
     this.dispatchEvent(new Event('change'))
+    this.dispatchEvent(new CustomEvent('optionselected', {
+      detail: {
+        value: event.currentTarget.dataset.value,
+      },
+    }))
   }
 
   get options() {

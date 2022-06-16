@@ -1,21 +1,15 @@
 :host {
   display: inline-block;
   position: relative;
+  content: contain;
   background-color: var(--bea-color-ivory);
   color: var(--bea-color-black);
   border-radius: 25px;
   font-family: Pangram, sans-serif;
 }
 
-:host(:hover) {
-  outline: 1px solid var(--bea-color-lightblue);
-}
-
-:host(:focus-within) {
-  outline: 2px solid var(--bea-color-lightblue);
-}
-
 input {
+  position: relative;
   width: 100%;
   height: 100%;
   padding: 15px 25px;
@@ -24,6 +18,15 @@ input {
   border: none;
   border-radius: inherit;
   background-color: inherit;
+  z-index: 1;
+}
+
+:host(:hover) input {
+  outline: 1px solid var(--bea-color-lightblue);
+}
+
+:host(:focus-within) input {
+  outline: 2px solid var(--bea-color-lightblue);
 }
 
 input::placeholder {
@@ -41,6 +44,7 @@ input:focus {
   top: 100%;
   width: calc(100% - 75px);
   margin-left: 25px;
+  background-color: var(--bea-color-white);
   border-radius: 0% 0% 10px 10px;
   border: 1px solid var(--bea-color-lightblue);
   border-top: none;
